@@ -11,7 +11,14 @@ help:
 	@echo '3. Compile versions:'
 	@echo '  make compile-versions    Pin versions of newly added dependencies'
 	@echo ''
+	@echo '4. Run server'
+	@echo '  make runserver            Start local server'
 
+
+.PHONY: runserver
+runserver:
+	@echo ' -- Run server'
+	venv/bin/python manage.py runserver
 
 .PHONY: setup_venv
 setup_venv: clean-files
