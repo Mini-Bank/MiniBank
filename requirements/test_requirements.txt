@@ -1,5 +1,13 @@
+asgiref==3.2.5            # via -r requirements/requirements.txt, django
+click==7.1.1              # via pip-tools
+django==3.0.4             # via -r requirements/requirements.txt
 entrypoints==0.3          # via flake8
-flake8==3.7.9             # via -r requirements/test_requirements.in
+flake8-print==3.1.4       # via -r requirements/test_requirements.in
+flake8==3.7.9             # via -r requirements/test_requirements.in, flake8-print
 mccabe==0.6.1             # via flake8
-pycodestyle==2.5.0        # via flake8
+pip-tools==4.5.1          # via -r requirements/test_requirements.in
+pycodestyle==2.5.0        # via flake8, flake8-print
 pyflakes==2.1.1           # via flake8
+pytz==2019.3              # via -r requirements/requirements.txt, django
+six==1.14.0               # via flake8-print, pip-tools
+sqlparse==0.3.1           # via -r requirements/requirements.txt, django
