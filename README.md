@@ -5,7 +5,7 @@ This is the source code of our banking system, developed in educational
 purposes.
 
 ## Technologies
-* Python (3.6.9)
+* Python (3.8)
 * PostgreSQL
 * Django (3.0.4)
 * Docker 
