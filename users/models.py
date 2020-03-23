@@ -17,4 +17,3 @@ class Users(models.Model):
 class Roles(models.Model):
     role_name = models.IntegerField()
     user = models.OneToOneField(Users, on_delete=models.CASCADE)
-
