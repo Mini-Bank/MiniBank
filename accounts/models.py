@@ -1,7 +1,7 @@
 from django.db import models
 
 from common.models import TimeStampedModel
-from users.models import Users
+from users.models import User
 
 
 class Account(TimeStampedModel):
@@ -19,11 +19,11 @@ class Account(TimeStampedModel):
     credit_end_date = models.DateTimeField(null=True)
     deposit_start_date = models.DateTimeField(null=True)
     deposit_end_date = models.DateTimeField(null=True)
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Transaction(TimeStampedModel):
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     type_of_expence = models.CharField(max_length=50)
     amount = models.FloatField()
     receiver = models.CharField(max_length=16)

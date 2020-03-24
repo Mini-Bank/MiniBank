@@ -4,7 +4,7 @@ from django.db import models
 from common.models import TimeStampedModel
 
 
-class Users(TimeStampedModel, AbstractBaseUser):
+class User(TimeStampedModel, AbstractBaseUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField(max_length=70, unique=True)
@@ -17,6 +17,6 @@ class Users(TimeStampedModel, AbstractBaseUser):
     residence_permit = models.TextField(max_length=255)
 
 
-class Roles(TimeStampedModel):
+class Role(TimeStampedModel):
     role_name = models.IntegerField()
-    user = models.OneToOneField(Users, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
