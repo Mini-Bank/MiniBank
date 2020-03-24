@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'common',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'MiniBank.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'MiniBank',
+        'USER': os.getenv('MINIBANK_DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('MINIBANK_DB_PASSWORD', 'postgres'),
+        'HOST': os.getenv('MINIBANK_DB_HOST', 'localhost'),
+        'PORT': os.getenv('MINIBANK_DB_PORT', '5432')
     }
 }
 
