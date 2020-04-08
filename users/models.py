@@ -4,6 +4,10 @@ from django.db import models
 from common.models import TimeStampedModel
 
 
+class Role(TimeStampedModel):
+    role_name = models.IntegerField()
+
+
 class User(TimeStampedModel, AbstractBaseUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -11,12 +15,10 @@ class User(TimeStampedModel, AbstractBaseUser):
     phone_number = models.CharField(max_length=13, unique=True)
     passport_number = models.CharField(max_length=8, unique=True)
     identity_code = models.CharField(max_length=15, unique=True)
-    company = models.ForeignKey("self", on_delete=models.DO_NOTHING)
     salary = models.FloatField()
     birth_date = models.DateField()
     residence_permit = models.TextField(max_length=255)
+    password = models.CharField(max_length=88)
+    role = models.OneToOneField(Role, on_delete=models.DO_NOTHING)
+    user_company = models.ForeignKey("accounts.Company", on_delete=models.DO_NOTHING, blank=True)
 
-
-class Role(TimeStampedModel):
-    role_name = models.IntegerField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE)

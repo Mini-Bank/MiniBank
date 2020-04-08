@@ -23,7 +23,16 @@ class Account(TimeStampedModel):
 
 
 class Transaction(TimeStampedModel):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE)
     type_of_expence = models.CharField(max_length=50)
     amount = models.FloatField()
     receiver = models.CharField(max_length=16)
+
+
+class Company(TimeStampedModel):
+    company_name = models.CharField(max_length=25, unique=True)
+    company_owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    email = models.EmailField(max_length=70, unique=True)
+    amount = models.FloatField(null=True)
+    reg_location = models.CharField(max_length=25, null=True)
+    account = models.OneToOneField(Account, on_delete=models.DO_NOTHING)
