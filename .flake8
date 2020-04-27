@@ -9,7 +9,8 @@ exclude=
         .eggs,
         *.egg,
         venv,
-        pip-download-cache
+        pip-download-cache,
+        migrations
 
 ignore=
         W503,  # line break before binary operator. Instead we use W504 -line break after binary operator

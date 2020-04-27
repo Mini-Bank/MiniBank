@@ -1,10 +1,15 @@
+"""Desctibe Accounts models."""
+
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from common.models import TimeStampedModel
 from users.models import User
 
 
 class Account(TimeStampedModel):
+    """Account model."""
+
     number = models.CharField(max_length=16, unique=True)
     is_debit = models.BooleanField(default=True)
     CVV = models.IntegerField()
@@ -23,13 +28,29 @@ class Account(TimeStampedModel):
 
 
 class Transaction(TimeStampedModel):
+    """Transaction model."""
+
+    class TypeOfExpenceChoices(models.TextChoices):
+        """Describes choices for the Transaction model."""
+
+        ONLINE_PAYMENT = 'ON_PT', _('Online Payment')
+        PAYMENT = 'PT', _('Payment')
+        TRANSACTION_TO_ANOTHER_USER = 'TR_USR', _('Transaction to another user')
+        UTILITY_PAYMENTS = 'UT_PT', _('Utility payments')
+
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
-    type_of_expence = models.CharField(max_length=50)
+    type_of_expence = models.CharField(
+        max_length=6,
+        choices=TypeOfExpenceChoices.choices,
+        default=TypeOfExpenceChoices.PAYMENT
+    )
     amount = models.FloatField()
     receiver = models.CharField(max_length=16)
 
 
 class Company(TimeStampedModel):
+    """Company model."""
+
     company_name = models.CharField(max_length=25, unique=True)
     company_owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     email = models.EmailField(max_length=70, unique=True)
