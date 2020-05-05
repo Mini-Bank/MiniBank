@@ -6,6 +6,7 @@ flake8-print==3.1.4       # via -r requirements/test_requirements.in
 flake8==3.7.9             # via -r requirements/test_requirements.in, flake8-print
 mccabe==0.6.1             # via flake8
 pip-tools==4.5.1          # via -r requirements/test_requirements.in
+psycopg2==2.7.7           # via -r requirements/test_requirements.in
 pycodestyle==2.5.0        # via flake8, flake8-print
 pyflakes==2.1.1           # via flake8
 pytz==2019.3              # via -r requirements/requirements.txt, django
